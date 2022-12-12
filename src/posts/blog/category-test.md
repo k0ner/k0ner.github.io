@@ -8,5 +8,3 @@ alt: "apple big sur gradient"
 ---
 
 ## Category Test
-
-🍎
