@@ -2,7 +2,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://headlessmultilingual.gatsbyjs.io',
+    siteUrl: 'https://crackingleetcode.com',
   },
   plugins: [
     {
