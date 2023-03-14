@@ -97,7 +97,7 @@ export default HomepageTemplate;
 
 export const query = graphql`
   query HomepageQuery($locale: String!) {
-    datoCmsHomepage(locale: { eq: $locale }) {
+    datoCmsHomepage(locale: {eq: $locale}) {
       locale
       seo {
         seoTitle: title
@@ -118,18 +118,14 @@ export const query = graphql`
       }
       featuredPostsTitle
     }
-    datoCmsBlogRoot(locale: { eq: $locale }) {
+    datoCmsBlogRoot(locale: {eq: $locale}) {
       locale
       id: originalId
     }
     allBlogPosts: allDatoCmsBlogPost(
-      filter: {
-        locale: { eq: $locale }
-        featuredInHomepage: { eq: true }
-        noTranslate: { ne: true }
-        categoryLink: { noTranslate: { ne: true } }
-      }
-      sort: { order: ASC, fields: meta___updatedAt }
+      filter: {locale: {eq: $locale}, featuredInHomepage: {eq: true}, noTranslate: {ne: true}, categoryLink: {noTranslate: {ne:
+  true}}}
+      sort: {meta: {updatedAt: ASC}}
       limit: 6
     ) {
       postNodes: nodes {
@@ -151,24 +147,20 @@ export const query = graphql`
           squaredImage: gatsbyImageData(
             width: 100
             height: 100
-            imgixParams: { ar: "1", fit: "crop" }
+            imgixParams: {ar: "1", fit: "crop"}
           )
         }
         author {
           authorName: name
           picture {
-            authorImageData: gatsbyImageData(
-              height: 30
-              width: 30
-              placeholder: NONE
-            )
+            authorImageData: gatsbyImageData(height: 30, width: 30, placeholder: NONE)
           }
         }
         subtitle
         title
       }
     }
-    datoCmsMiscTextString(locale: { eq: $locale }) {
+    datoCmsMiscTextString(locale: {eq: $locale}) {
       locale
       seeAllPosts
     }

@@ -1,20 +1,20 @@
-import { graphql } from 'gatsby';
+import {graphql} from 'gatsby';
 
-import { PageWrapper } from '../components/Layout/PageWrapper';
-import { Hero } from '../components/Layout/Hero';
-import { CategoriesMenu } from '../components/Layout/Blog/CategoriesMenu';
-import { ArticleCard } from '../components/Layout/Blog/Cards/ArticleCard';
-import { SectionGridThreeCols } from '../components/Layout/sharedStyles/sectionStyles';
+import {PageWrapper} from '../components/Layout/PageWrapper';
+import {Hero} from '../components/Layout/Hero';
+import {CategoriesMenu} from '../components/Layout/Blog/CategoriesMenu';
+import {ArticleCard} from '../components/Layout/Blog/Cards/ArticleCard';
+import {SectionGridThreeCols} from '../components/Layout/sharedStyles/sectionStyles';
 
 const BlogRootTemplate = ({
-  data: {
-    datoCmsBlogRoot: {
-      hero: [{ heroTitle, heroSubtitle }],
-      seo,
-    },
-    allDatoCmsBlogPost: { blogPostNodes },
-  },
-  pageContext,
+                            data: {
+                              datoCmsBlogRoot: {
+                                hero: [{heroTitle, heroSubtitle}],
+                                seo,
+                              },
+                              allDatoCmsBlogPost: {blogPostNodes},
+                            },
+                            pageContext,
 }) => (
   <PageWrapper
     pageData={pageContext}
@@ -54,12 +54,8 @@ export default BlogRootTemplate;
 export const query = graphql`
   query BlogRootQuery($locale: String!) {
     allDatoCmsBlogPost(
-      filter: {
-        locale: { eq: $locale }
-        noTranslate: { ne: true }
-        categoryLink: { noTranslate: { ne: true } }
-      }
-      sort: { order: ASC, fields: meta___updatedAt }
+      filter: {locale: {eq: $locale}, noTranslate: {ne: true}, categoryLink: {noTranslate: {ne: true}}}
+      sort: {meta: {updatedAt: ASC}}
     ) {
       blogPostNodes: nodes {
         locale
@@ -84,7 +80,7 @@ export const query = graphql`
           squaredImage: gatsbyImageData(
             width: 100
             height: 100
-            imgixParams: { ar: "1", fit: "crop" }
+            imgixParams: {ar: "1", fit: "crop"}
           )
         }
         author {
@@ -95,7 +91,7 @@ export const query = graphql`
         }
       }
     }
-    datoCmsBlogRoot(locale: { eq: $locale }) {
+    datoCmsBlogRoot(locale: {eq: $locale}) {
       locale
       seo {
         seoTitle: title

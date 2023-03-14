@@ -64,7 +64,7 @@ export default CategoryTemplate;
 
 export const query = graphql`
   query CategoryQuery($id: String!, $locale: String!) {
-    datoCmsCategory(originalId: { eq: $id }, locale: { eq: $locale }) {
+    datoCmsCategory(originalId: {eq: $id}, locale: {eq: $locale}) {
       locale
       seo {
         seoTitle: title
@@ -80,12 +80,8 @@ export const query = graphql`
       }
     }
     allCategoryPosts: allDatoCmsBlogPost(
-      filter: {
-        locale: { eq: $locale }
-        noTranslate: { ne: true }
-        categoryLink: { originalId: { eq: $id } }
-      }
-      sort: { order: ASC, fields: meta___updatedAt }
+      filter: {locale: {eq: $locale}, noTranslate: {ne: true}, categoryLink: {originalId: {eq: $id}}}
+      sort: {meta: {updatedAt: ASC}}
     ) {
       postNodes: nodes {
         locale
@@ -107,17 +103,13 @@ export const query = graphql`
           squaredImage: gatsbyImageData(
             width: 100
             height: 100
-            imgixParams: { ar: "1", fit: "crop" }
+            imgixParams: {ar: "1", fit: "crop"}
           )
         }
         author {
           authorName: name
           picture {
-            authorImageData: gatsbyImageData(
-              height: 30
-              width: 30
-              placeholder: NONE
-            )
+            authorImageData: gatsbyImageData(height: 30, width: 30, placeholder: NONE)
           }
         }
         subtitle

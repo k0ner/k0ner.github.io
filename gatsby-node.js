@@ -278,13 +278,10 @@ exports.createPages = async ({
       allDatoCmsBlogPost: { blogPostNodes },
     },
   } = await graphql(`
-    query {
+    {
       allDatoCmsBlogPost(
-        sort: { fields: [locale, meta___updatedAt] }
-        filter: {
-          noTranslate: { ne: true }
-          categoryLink: { noTranslate: { ne: true } }
-        }
+        sort: [{locale: ASC}, {meta: {updatedAt: ASC}}]
+        filter: {noTranslate: {ne: true}, categoryLink: {noTranslate: {ne: true}}}
       ) {
         blogPostNodes: nodes {
           id: originalId
